@@ -10,10 +10,10 @@ public abstract class Book extends Reading {
     private boolean isAvailable;
 
     public Book(String bookTitle, String bookAuthor, String bookISBN, int numberOfPages) {
-        bookTitle = title;
-        bookAuthor = author;
-        bookISBN = ISBN;
-        numberOfPages = numOfPages;
+        this.title = bookTitle;
+        this.author = bookAuthor;
+        this.ISBN = bookISBN;
+        this.numOfPages = numberOfPages;
 
     }
 

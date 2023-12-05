@@ -21,13 +21,13 @@ public class TraditionalBook extends Book {
     }
 
     @Override
-    public String toString() {
-        System.out.print("E-Book");
-        System.out.println("\nBook Title: " + getTitle());
-        System.out.println("\nBook Author: " + getAuthor());
-        System.out.println("\nBook ISBN: " + getISBN());
-        System.out.println("\nNumber of Pages: " + getNumOfPages());
-        System.out.println("\nYear Published: " + getYearPublished());
-        return null;
+        public String toString() {
+            return
+                    "Non-Fiction Book - ISBN: " + getISBN() +
+                            ", Title: " + getTitle() +
+                            ", Author: " + getAuthor() +
+                            ", Number of Pages: " + getNumOfPages() +
+                            ", Year Published: " + getYearPublished();
+
     }
 }

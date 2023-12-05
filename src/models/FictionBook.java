@@ -22,7 +22,12 @@ public class FictionBook extends TraditionalBook {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Fiction Book - ISBN: " + getISBN() +
+                ", Title: " + getTitle() +
+                ", Author: " + getAuthor() +
+                ", No. of Pages: " + getNumOfPages() +
+                ", Year Published: " + getYearPublished() +
+                ", Genre: " + getGenre();
     }
 
     @Override

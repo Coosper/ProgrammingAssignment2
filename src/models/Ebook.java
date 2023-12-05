@@ -23,13 +23,12 @@ public class Ebook extends Book {
 
     @Override
     public String toString() {
-        System.out.print("E-Book");
-        System.out.println("\nBook Title: " + getTitle());
-        System.out.println("\nBook Author: " + getAuthor());
-        System.out.println("\nBook ISBN: " + getISBN());
-        System.out.println("\nNumber of Pages: " + getNumOfPages());
-        System.out.println("\nInteractive: " + getInteractivity());
-        return null;
+        return
+                "E-Book - ISBN: " + getISBN() +
+                ", Title: " + getTitle() +
+                ", Author: " + getAuthor() +
+                ", No. of Pages: " + getNumOfPages() +
+                ", Interactivity: " + getInteractivity();
     }
 
     @Override

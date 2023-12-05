@@ -24,15 +24,15 @@ public class History extends NonFiction {
 
     @Override
     public String toString() {
-        System.out.print("E-Book");
-        System.out.println("\nBook Title: " + getTitle());
-        System.out.println("\nBook Author: " + getAuthor());
-        System.out.println("\nBook ISBN: " + getISBN());
-        System.out.println("\nNumber of Pages: " + getNumOfPages());
-        System.out.println("\nYear Published: " + getYearPublished());
-        System.out.println("\nBook Topic: " + getTopic());
-        System.out.println("\nBook Era" + getEra());
-        return null;
+        return
+                "History Book - ISBN: " + getISBN() +
+                        ", Title: " + getTitle() +
+                        ", Author: " + getAuthor() +
+                        ", Number of Pages: " + getNumOfPages() +
+                        ", Year Published: " + getYearPublished() +
+                        ", Topic: " + getTopic() +
+                        ", Book Era: " + getEra();
+
     }
 
     @Override

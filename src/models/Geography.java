@@ -1,5 +1,9 @@
 package models;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashMap;
+
 public class Geography extends NonFiction {
     int elements;
     public Geography(String bookTitle, String bookAuthor, String bookISBN, int numberOfPages, int yearPublished, String topic, int elements) {
@@ -8,7 +12,13 @@ public class Geography extends NonFiction {
     }
 
     public String getElements() {
-        return null;
+        Map<Integer, String> elementsMap = new HashMap<>();
+        elementsMap.put(1, "The World in Spatial Terms");
+        elementsMap.put(2, "Places and Regions");
+        elementsMap.put(3, "Physical System");
+        elementsMap.put(4, "Human Systems");
+
+        return elementsMap.getOrDefault(elements, "Unknown");
     }
 
     public void setElements(int elements) {
@@ -22,15 +32,14 @@ public class Geography extends NonFiction {
 
     @Override
     public String toString() {
-        System.out.print("E-Book");
-        System.out.println("\nBook Title: " + getTitle());
-        System.out.println("\nBook Author: " + getAuthor());
-        System.out.println("\nBook ISBN: " + getISBN());
-        System.out.println("\nNumber of Pages: " + getNumOfPages());
-        System.out.println("\nYear Published: " + getYearPublished());
-        System.out.println("\nBook Topic: " + getTopic());
-        System.out.println("\nBook Elements: " + getElements());
-        return null;
+        return
+                "Geography Book - ISBN: " + getISBN() +
+                ", Title: " + getTitle() +
+                ", Author: " + getAuthor() +
+                ", Number of Pages: " + getNumOfPages() +
+                ", Year Published: " + getYearPublished() +
+                ", Topic: " + getTopic() +
+                ", Book Elements: " + getElements();
     }
 
     @Override
