@@ -1,4 +1,9 @@
 package utils;
+import models.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Utilities {
 
@@ -42,6 +47,12 @@ public class Utilities {
      */
     public static boolean validRange(double numberToCheck, double min, double max) {
         return ((numberToCheck >= min) && (numberToCheck <= max));
+    }
+
+    public static void swapBooks(ArrayList<Book> books, int i, int j) {
+        Book temp = books.get(i);
+        books.set(i, books.get(j));
+        books.set(j, temp);
     }
 
 }
