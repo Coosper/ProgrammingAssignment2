@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
 
 public class LibrarySystemAPI {
     private ArrayList<Book> allBooks;
@@ -150,7 +157,7 @@ public class LibrarySystemAPI {
             }
         }
 
-        if(result.isEmpty()) {
+        if (result.isEmpty()) {
             return "No books have been found with the word " + wordToSearchBy + " in the title.";
         } else {
             return result;
@@ -173,13 +180,13 @@ public class LibrarySystemAPI {
         String matchingIsbn = "";
         for (Book book : allBooks) {
             if (book.getISBN().toUpperCase().contains(isbnToSearchBy.toUpperCase())) {
-                matchingIsbn  += "Title: " + book.getISBN() + ".\n";
+                matchingIsbn += "Title: " + book.getISBN() + ".\n";
             }
         }
-        if(matchingIsbn.equals("")) {
-            return "No books by '" + matchingIsbn  + "' have been found in the library.";
+        if (matchingIsbn.equals("")) {
+            return "No books by '" + matchingIsbn + "' have been found in the library.";
         } else {
-            return matchingIsbn ;
+            return matchingIsbn;
         }
     }
 
@@ -187,13 +194,13 @@ public class LibrarySystemAPI {
         String matchingTitle = "";
         for (Book book : allBooks) {
             if (book.getTitle().toUpperCase().contains(titleToSearchBy.toUpperCase())) {
-                matchingTitle  += "Title: " + book.getTitle() + ".\n";
+                matchingTitle += "Title: " + book.getTitle() + ".\n";
             }
         }
-        if(matchingTitle.equals("")) {
-            return "No books by '" + matchingTitle  + "' have been found in the library.";
+        if (matchingTitle.equals("")) {
+            return "No books by '" + matchingTitle + "' have been found in the library.";
         } else {
-            return matchingTitle ;
+            return matchingTitle;
         }
     }
 
@@ -204,7 +211,7 @@ public class LibrarySystemAPI {
                 matchingAuthor += "Title: " + book.getAuthor() + ".\n";
             }
         }
-        if(matchingAuthor.equals("")) {
+        if (matchingAuthor.equals("")) {
             return "No books by '" + authorToSearchBy + "' have been found in the library.";
         } else {
             return matchingAuthor;
@@ -236,5 +243,25 @@ public class LibrarySystemAPI {
             counter++;
         }
         return editionAndTitle;
+    }
+
+    public void save(ArrayList<Book> allBooks) throws Exception {
+        XStream xstream = new XStream(new DomDriver());
+        ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("books.xml"));
+        out.writeObject(allBooks);
+        out.close();
+    }
+
+    public void load() throws Exception {
+        Class<?>[] classes = new Class[]{Book.class};
+
+        XStream xstream = new XStream(new DomDriver());
+        XStream.setupDefaultSecurity(xstream);
+        xstream.allowTypes(classes);
+        ObjectInputStream in = xstream.createObjectInputStream(new FileReader("books.xml"));
+        ArrayList<Book> allBooks = (ArrayList<Book>) in.readObject();
+        in.close();
+
+
     }
 }
