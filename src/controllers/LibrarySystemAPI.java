@@ -152,7 +152,10 @@ public class LibrarySystemAPI {
     public String searchWord(String wordToSearchBy) {
         String result = "";
         for (Book book : allBooks) {
-            if (book.getTitle().toLowerCase().contains(wordToSearchBy.toLowerCase())) {
+            if (
+                    book.getTitle().toUpperCase().contains(wordToSearchBy.toUpperCase()) ||
+                    book.getAuthor().toUpperCase().contains(wordToSearchBy.toUpperCase()) ||
+                    book.getISBN().toUpperCase().contains(wordToSearchBy.toUpperCase())) {
                 result += book.toString();
             }
         }
@@ -168,7 +171,7 @@ public class LibrarySystemAPI {
         return booksbyIsbn.get(isbnToSearchFor);
     }
 
-    public Book getBookTitle(String titleToSearchFor) {
+    public Book getBookByTitle(String titleToSearchFor) {
         return booksByTitle.get(titleToSearchFor);
     }
 
@@ -180,7 +183,7 @@ public class LibrarySystemAPI {
         String matchingIsbn = "";
         for (Book book : allBooks) {
             if (book.getISBN().toUpperCase().contains(isbnToSearchBy.toUpperCase())) {
-                matchingIsbn += "Title: " + book.getISBN() + ".\n";
+                matchingIsbn += book.toString() + "\n";
             }
         }
         if (matchingIsbn.equals("")) {
@@ -194,7 +197,7 @@ public class LibrarySystemAPI {
         String matchingTitle = "";
         for (Book book : allBooks) {
             if (book.getTitle().toUpperCase().contains(titleToSearchBy.toUpperCase())) {
-                matchingTitle += "Title: " + book.getTitle() + ".\n";
+                matchingTitle += book.toString() + ".\n";
             }
         }
         if (matchingTitle.equals("")) {
@@ -208,7 +211,7 @@ public class LibrarySystemAPI {
         String matchingAuthor = "";
         for (Book book : allBooks) {
             if (book.getAuthor().toUpperCase().contains(authorToSearchBy.toUpperCase())) {
-                matchingAuthor += "Title: " + book.getAuthor() + ".\n";
+                matchingAuthor += book.toString() + ".\n";
             }
         }
         if (matchingAuthor.equals("")) {
@@ -245,23 +248,19 @@ public class LibrarySystemAPI {
         return editionAndTitle;
     }
 
-    public void save(ArrayList<Book> allBooks) throws Exception {
+    public void save() throws Exception
+    {
         XStream xstream = new XStream(new DomDriver());
         ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("books.xml"));
         out.writeObject(allBooks);
         out.close();
     }
 
-    public void load() throws Exception {
-        Class<?>[] classes = new Class[]{Book.class};
-
+    public void load() throws Exception
+    {
         XStream xstream = new XStream(new DomDriver());
-        XStream.setupDefaultSecurity(xstream);
-        xstream.allowTypes(classes);
-        ObjectInputStream in = xstream.createObjectInputStream(new FileReader("books.xml"));
-        ArrayList<Book> allBooks = (ArrayList<Book>) in.readObject();
-        in.close();
-
-
+        ObjectInputStream is = xstream.createObjectInputStream(new FileReader("books.xml"));
+        allBooks = (ArrayList<Book>) is.readObject();
+        is.close();
     }
 }
