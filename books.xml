@@ -1,0 +1,75 @@
+<object-stream>
+  <list>
+    <models.Ebook>
+      <edition>This is the latest edition of this book.</edition>
+      <title>Deus In Absentia</title>
+      <author>Cardinal Copia</author>
+      <ISBN>19485886B</ISBN>
+      <numOfPages>1500</numOfPages>
+      <isAvailable>false</isAvailable>
+      <interactivity>false</interactivity>
+    </models.Ebook>
+    <models.Geography>
+      <edition>This is the latest edition of this book.</edition>
+      <title>Guide to Poland</title>
+      <author>Kacper Marszelewski</author>
+      <ISBN>1241245G</ISBN>
+      <numOfPages>1242</numOfPages>
+      <isAvailable>false</isAvailable>
+      <yearPublished>2002</yearPublished>
+      <topic>Poland</topic>
+      <elements>2</elements>
+    </models.Geography>
+    <models.Geography>
+      <edition>This is the latest edition of this book.</edition>
+      <title>Inside North Korea</title>
+      <author>Kim Il-Sung</author>
+      <ISBN>21424124</ISBN>
+      <numOfPages>142</numOfPages>
+      <isAvailable>false</isAvailable>
+      <yearPublished>2005</yearPublished>
+      <topic>North Korea</topic>
+      <elements>4</elements>
+    </models.Geography>
+    <models.FictionBook>
+      <edition>This is the latest edition of this book.</edition>
+      <title>Jet Set Radio: Future</title>
+      <author>Rokkaku Gouji</author>
+      <ISBN>1523453K</ISBN>
+      <numOfPages>905</numOfPages>
+      <isAvailable>false</isAvailable>
+      <yearPublished>2002</yearPublished>
+      <genre>Fantasy</genre>
+    </models.FictionBook>
+    <models.Ebook>
+      <edition>This is the latest edition of this book.</edition>
+      <title>Man of Glass</title>
+      <author>Gaunter O&apos;Dimm</author>
+      <ISBN>1933948G</ISBN>
+      <numOfPages>150</numOfPages>
+      <isAvailable>false</isAvailable>
+      <interactivity>true</interactivity>
+    </models.Ebook>
+    <models.History>
+      <edition>This is the latest edition of this book.</edition>
+      <title>The Battle of Grunwald</title>
+      <author>Mieszko Marszelewski</author>
+      <ISBN>12444343G</ISBN>
+      <numOfPages>1245</numOfPages>
+      <isAvailable>false</isAvailable>
+      <yearPublished>1995</yearPublished>
+      <topic>Polish History</topic>
+      <era>Medieval</era>
+    </models.History>
+    <models.FictionBook>
+      <edition>This is the latest edition of this book.</edition>
+      <title>The Paleblood Hunt</title>
+      <author>Gehrman Green</author>
+      <ISBN>14893274G</ISBN>
+      <numOfPages>124</numOfPages>
+      <isAvailable>false</isAvailable>
+      <yearPublished>2015</yearPublished>
+      <genre>Horror</genre>
+    </models.FictionBook>
+  </list>
+</object-stream>

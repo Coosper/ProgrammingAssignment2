@@ -224,6 +224,7 @@ public class LibrarySystemAPI {
     public String alphabeticalOrder() {
         for (int i = allBooks.size() - 1; i >= 0; i--) {
             int highestIndex = 0;
+
             for (int j = 0; j <= i; j++) {
                 if (allBooks.get(j).getTitle().compareTo(allBooks.get(highestIndex).getTitle()) > 0) {
                     highestIndex = j;
@@ -232,8 +233,10 @@ public class LibrarySystemAPI {
             Utilities.swapBooks(allBooks, i, highestIndex);
         }
         String alphabeticalResult = "";
+        int counter = 1;
         for (Book book : allBooks) {
-            alphabeticalResult += book.getTitle() + "\n";
+            alphabeticalResult += counter + "). " + book.getTitle() + "\n";
+            counter++;
         }
         return alphabeticalResult;
     }
@@ -242,7 +245,7 @@ public class LibrarySystemAPI {
         String editionAndTitle = "";
         int counter = 1;
         for (Book book : allBooks) {
-            editionAndTitle += counter + "). " + book.getTitle() + " - Edition: " + book.getEdition();
+            editionAndTitle += counter + "). " + book.getTitle() + " - Edition: " + book.getEdition() + "\n";
             counter++;
         }
         return editionAndTitle;
@@ -256,11 +259,19 @@ public class LibrarySystemAPI {
         out.close();
     }
 
-    public void load() throws Exception
-    {
+    @SuppressWarnings("unchecked")
+    public void load() throws Exception {
+        //list of classes that you wish to include in the serialisation, separated by a comma
+        Class<?>[] classes = new Class[] {Book.class, Ebook.class, FictionBook.class, Geography.class, History.class, NonFiction.class, TraditionalBook.class};
+
+        //setting up the xstream object with default security and the above classes
         XStream xstream = new XStream(new DomDriver());
-        ObjectInputStream is = xstream.createObjectInputStream(new FileReader("books.xml"));
-        allBooks = (ArrayList<Book>) is.readObject();
-        is.close();
+        XStream.setupDefaultSecurity(xstream);
+        xstream.allowTypes(classes);
+
+        //doing the actual serialisation to an XML file
+        ObjectInputStream in = xstream.createObjectInputStream(new FileReader("books.xml"));
+        allBooks = (ArrayList<Book>) in.readObject();
+        in.close();
     }
 }

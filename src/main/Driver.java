@@ -281,7 +281,7 @@ public class Driver {
 
     public void searchBookByWord() {
         if (library.numberOfBooks() != 0) {
-            String keywordToSearchBy = ScannerInput.readNextLine("Enter the keyword to search by");
+            String keywordToSearchBy = ScannerInput.readNextLine("Enter the keyword to search by: ");
             String result = library.searchWord(keywordToSearchBy);
             System.out.println("Books found: ");
             System.out.println(result);
@@ -313,6 +313,9 @@ public class Driver {
         } catch (Exception e) {
             System.err.println("Error writing to file " + e);
         }
+        System.out.println();
+        System.out.println("\n\u001B[32mSave Successful!!\u001B[0m");
+        System.out.println();
     }
 
     private void loadData() {
@@ -321,6 +324,9 @@ public class Driver {
         } catch (Exception e) {
             System.err.println("Error reading from file: " + e);
         }
+        System.out.println();
+        System.out.println("\n\u001B[32mLoad Successful!!\u001B[0m");
+        System.out.println();
     }
 
 }
