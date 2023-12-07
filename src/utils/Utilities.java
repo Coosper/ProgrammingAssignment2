@@ -49,6 +49,13 @@ public class Utilities {
         return ((numberToCheck >= min) && (numberToCheck <= max));
     }
 
+    /**
+     * A helper method which swaps two books within an arraylist
+     *
+     * @param books The ArrayList where the swap will occur
+     * @param i The index of the first book to swap.
+     * @param j Index of the second book to swap.
+     */
     public static void swapBooks(ArrayList<Book> books, int i, int j) {
         Book temp = books.get(i);
         books.set(i, books.get(j));

@@ -5,8 +5,15 @@ import models.*;
 import utils.*;
 
 public class Driver {
+
     private LibrarySystemAPI library;
 
+    /**
+     * Constructor for the Driver class.
+     *
+     * This constructor initializes the Driver object by creating a new instance
+     * of the LibrarySystemAPI class.
+     */
     public Driver() {
         library = new LibrarySystemAPI();
     }
@@ -16,6 +23,12 @@ public class Driver {
         app.runMenu();
     }
 
+    /**
+     * This method displays a menu to the user.
+     * It asks the user to enter a int number depending on their choice
+     *
+     * @return It returns the users choice.
+     */
     private int mainMenu() {
         int num;
         System.out.println("------------------");
@@ -45,6 +58,11 @@ public class Driver {
         return num;
     }
 
+    /**
+     * This method displays the main menu, processes whatever choice the user made
+     * by calling the corresponding methods.
+     * It handles invalid choices and allows the user to exit by pressing 0.
+     */
     private void runMenu() {
         int option = mainMenu();
         while (option != 0) {
@@ -109,6 +127,12 @@ public class Driver {
         System.exit(0);
     }
 
+    /**
+     * This methods allows the addition of new books to the library.
+     * It immediately asks the user which type of book they'd like to create.
+     * It takes in the information shared by all books and then uses a switch to take in additional information shared by different book types.
+     * It adds these books to the library and displays a success message.
+     */
     private void addBook() {
         System.out.println("Which book type would you like to add?");
         System.out.println("1). eBook");
@@ -172,6 +196,12 @@ public class Driver {
         System.out.println();
     }
 
+
+    /**
+     * This method starts off by printing out ALL of the books within the library
+     * It then asks the user to enter the index of the book they wish to delete.
+     * If there is a book at that index number it is deleted from the library and displays a fitting error message if there isn't.
+     */
     private void removeBook() {
         System.out.println(library.listOfBooks());
 
@@ -189,6 +219,11 @@ public class Driver {
         }
     }
 
+    /**
+     * This method first checks if there are any books in the library.
+     * If there are it displays all of the books.
+     * If there isn't any then it displays that there are no books saved.
+     */
     private void displayAllBooks() {
         if (library.numberOfBooks() != 0) {
             System.out.println(library.listOfBooks());
@@ -197,7 +232,10 @@ public class Driver {
         }
     }
 
-
+    /**
+     * This method retrieves a book from the library based on its ISBN
+     * It checks whether the library has any book within it to begin with.
+     */
     private void getBookByIsbn() {
         if (library.numberOfBooks() != 0) {
             String isbnToSearchBy = ScannerInput.readNextLine("Enter the ISBN of the book you want to view: ");
@@ -214,6 +252,9 @@ public class Driver {
         }
     }
 
+    /**
+     * This method retrieves a book from the library based on its Title.
+     */
     private void getBookByTitle() {
         if (library.numberOfBooks() != 0) {
             String titleToSearchBy = ScannerInput.readNextLine("Enter the Title of the book you want to view: ");
@@ -230,6 +271,9 @@ public class Driver {
         }
     }
 
+    /**
+     * This method retrieves a book from the library based on its Author.
+     */
     private void getBookByAuthor() {
         if (library.numberOfBooks() != 0) {
             String authorToSearchBy = ScannerInput.readNextLine("Enter the author of the book you want to view: ");
@@ -246,6 +290,9 @@ public class Driver {
         }
     }
 
+    /**
+     * This method retrieves ALL books based on their ISBN
+     */
     public void getAllBooksByIsbn() {
         if (library.numberOfBooks() != 0) {
             String isbnToSearchBy = ScannerInput.readNextLine("Enter the ISBN to search by: ");
@@ -257,6 +304,9 @@ public class Driver {
         }
     }
 
+    /**
+     * This method retrieves ALL books based on their title.
+     */
     public void getAllBooksByTitle() {
         if (library.numberOfBooks() != 0) {
             String titleToSearchBy = ScannerInput.readNextLine("Enter the ISBN to search by: ");
@@ -268,6 +318,9 @@ public class Driver {
         }
     }
 
+    /**
+     * This method retrieves ALL books based on their Author.
+     */
     public void getAllBooksByAuthor() {
         if (library.numberOfBooks() != 0) {
             String authorToSearchBy = ScannerInput.readNextLine("Enter the author to search by: ");
@@ -279,6 +332,9 @@ public class Driver {
         }
     }
 
+    /**
+     * This method retrieves the info of books based on a inputted Keyword.
+     */
     public void searchBookByWord() {
         if (library.numberOfBooks() != 0) {
             String keywordToSearchBy = ScannerInput.readNextLine("Enter the keyword to search by: ");
@@ -290,6 +346,10 @@ public class Driver {
         }
     }
 
+    /**
+     * This method checks whether the library is empty.
+     * If there are books within it, it displays all the books in alphabetical order.
+     */
     public void showInAlphabeticalOrder() {
         if (library.numberOfBooks() != 0) {
             System.out.println("Books in alphabetical order");
@@ -299,6 +359,10 @@ public class Driver {
         }
     }
 
+    /**
+     * This method checks whether the library is empty.
+     * If there are books within it, it displays all of the books titles and editions.
+     */
     private void showEdition() {
         if(library.numberOfBooks() != 0) {
             System.out.println(library.showEditionOfEachBook());
@@ -307,6 +371,11 @@ public class Driver {
         }
     }
 
+    /**
+     * Saves the library to an .xml file.
+     * If an error occurs it displays an error message.
+     * If the save is succesful it displays a success message.
+     */
     private void saveData() {
         try {
             library.save();
@@ -318,6 +387,11 @@ public class Driver {
         System.out.println();
     }
 
+    /**
+     * It loads the library from the books.xml file.
+     * If an error occurs it displays an error message.
+     * If the save is succesful it displays a success message.
+     */
     private void loadData() {
         try {
             library.load();
