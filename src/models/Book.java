@@ -2,7 +2,7 @@ package models;
 
 import main.*;
 
-public abstract class Book extends Reading {
+public class Book extends Reading {
     private String title;
     private String author;
     private String ISBN;
@@ -32,12 +32,13 @@ public abstract class Book extends Reading {
         return ISBN;
     }
 
+
     public String toString() {
-        System.out.println("\nBook Title: " + title);
-        System.out.println("\nBook Author: " + author);
-        System.out.println("\nISBN: " + ISBN);
-        System.out.println("\nNumber of Pages: " + numOfPages);
-        return null;
+        return
+                "E-Book - ISBN: " + getISBN() +
+                        ", Title: " + getTitle() +
+                        ", Author: " + getAuthor() +
+                        ", No. of Pages: " + getNumOfPages();
     }
 
     public String getBookType() {

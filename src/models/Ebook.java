@@ -13,7 +13,7 @@ public class Ebook extends Book {
     }
 
     public void setInteractivity(boolean InteractivityStatus) {
-        InteractivityStatus = interactivity;
+        interactivity = InteractivityStatus;
     }
 
     @Override
